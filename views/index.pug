@@ -2,4 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #[em Video Game Store], a very basic Express website project 
+
+  h1 Video Game Store
+
+  p The store has the following record counts: 
+
+  ul 
+    li #[strong Games:] !{game_count}
+    li #[strong Copies:] !{game_instance_count}
+    li #[strong Genres:] !{genre_count}

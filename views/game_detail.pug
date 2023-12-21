@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1 Title: #{game.name}
+
+  p #[strong Description:] #{game.description}
+  p #[strong Genre:]
+    each val, index in game.genre
+      a(href=val.url) #{val.name}
+      if index < game.genre.length - 1
+        |,
+
+  div(style='margin-left:20px;margin-top:20px')
+    h4 Copies
+
+    each val in game_instances
+      hr
+      if val.status=='Available'
+        p.text-success #{val.status}
+      else if val.status=='Maintenance'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status}
+      p #[strong Id:]
+        a(href=val.url) #{val._id}
+
+    else
+      p There are no copies of this game in the library.
+
+  hr
+  p
+    a(href=game.url+'/delete') Delete Book
+  p
+    a(href=game.url+'/update') Update Book
